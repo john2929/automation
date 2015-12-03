@@ -6,3 +6,6 @@ apt-get install default-jre
 easy_install -U setuptools
 pip install screed
 pip install khmer
+pip install matplotlib
+apt-get install unzip
+apt-get install zlib1g-dev
