@@ -13,11 +13,22 @@ mapping.sh:
 	cat mapping.sh | parallel
 
 samview.sh:
+	export PATH=~/samtools-1.2:$PATH
+	for x in $(seq_R1); do echo "samtools view -Sb $${x%R1*}.sam > $${x%R1*}.bam";done > samview.sh
+	cat samview.sh | parallel
 
 sort.sh:
-
+	export PATH=~/samtools-1.2:$PATH
+	for x in $(seq_R1); do echo "samtools sort $${x%R1*}.bam $${x%R1*}.sorted";done > sort.sh
+        cat sort.sh | parallel
 index.sh:
+	export PATH=~/samtools-1.2:$PATH
+	for x in $(seq_R1); do echo "samtools index $${x%R1*}.sorted.bam";done > index.sh
+        cat index.sh | parallel
 
 idxstats.sh:
+	export PATH=~/samtools-1.2:$PATH
+	for x in $(seq_R1); do echo "samtools idxstats $${x%R1*}.sorted.bam > $${x%R1*}.idxstats.txt";done > idxstats.sh
+        cat idxstats.sh | parallel
 
 merge.sh:
