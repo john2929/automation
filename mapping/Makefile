@@ -34,4 +34,4 @@ idxstats.sh:
 merge.sh:
 	mkdir count
 	cp *.idxstats.txt count
-	bash idxstatsToOnefile.sh
+	bash idxstatsToOnefile.sh count
