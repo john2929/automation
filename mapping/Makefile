@@ -20,16 +20,16 @@ samview.sh:
 sort.sh:
 	export PATH=~/samtools-1.2:$PATH
 	for x in $(seq_R1); do echo "samtools sort $${x%R1*}.bam $${x%R1*}.sorted";done > sort.sh
-        cat sort.sh | parallel
+	cat sort.sh | parallel
 index.sh:
 	export PATH=~/samtools-1.2:$PATH
 	for x in $(seq_R1); do echo "samtools index $${x%R1*}.sorted.bam";done > index.sh
-        cat index.sh | parallel
+	cat index.sh | parallel
 
 idxstats.sh:
 	export PATH=~/samtools-1.2:$PATH
 	for x in $(seq_R1); do echo "samtools idxstats $${x%R1*}.sorted.bam > $${x%R1*}.idxstats.txt";done > idxstats.sh
-        cat idxstats.sh | parallel
+	cat idxstats.sh | parallel
 
 merge.sh:
 	mkdir count
