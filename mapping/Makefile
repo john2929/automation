@@ -32,3 +32,6 @@ idxstats.sh:
         cat idxstats.sh | parallel
 
 merge.sh:
+	mkdir count
+	cp *.idxstats.txt count
+	bash idxstatsToOnefile.sh
