@@ -1,0 +1,1 @@
+for file in *.fastq;do echo "paste - - - - < $file | tee >(awk 'BEGIN{FS=\"\t\";OFS=\"\n\"}{if (match(\$1,\"/1\"))print \$1,\$2,\$3,\$4}' > $file.R1.fastq) | awk 'BEGIN{FS=\"\t\"; OFS=\"\n\"}{if (match(\$1,\"/2\"))print \$1,\$2,\$3,\$4}' > $file.R2.fastq";done > split.sh
