@@ -5,7 +5,7 @@ all: trim-command.sh interleave-command.sh diginorm-command.sh error-trim.sh ext
 trim-command.sh: $(seq_R1)
 	date >> log
 	echo "start trim" >> log 
-	for x in $(seq_R1) ;do echo "java -jar /usr/local/bin/trimmomatic-0.30.jar PE $${x%_R1*}_R1.fastq.gz $${x%_R1*}_R2.fastq.gz $${x%_R1*}_s1_pe $${x%_R1*}_s1_se $${x%_R1*}_s2_pe $${x%_R1*}_s2_se ILLUMINACLIP:/usr/local/share/adapters/TruSeq3-PE.fa:2:30:10 1>$${x%_R1*}.log" ; done > trim-command.sh 
+	for x in $(seq_R1) ;do echo "java -jar /usr/local/bin/trimmomatic-0.30.jar PE $${x%_R1*}_R1_001.fastq.gz $${x%_R1*}_R2_001.fastq.gz $${x%_R1*}_s1_pe $${x%_R1*}_s1_se $${x%_R1*}_s2_pe $${x%_R1*}_s2_se ILLUMINACLIP:/usr/local/share/adapters/TruSeq3-PE.fa:2:30:10 1>$${x%_R1*}.log" ; done > trim-command.sh 
 	cat trim-command.sh | parallel
 	date >> log
 	echo "end trim" >> log
