@@ -1,29 +1,6 @@
 seq_R1 = $(wildcard *R1*fastq.gz)
 
-all: unzip.sh split.sh zip.sh trim-command.sh interleave-command.sh diginorm-command.sh error-trim.sh extract.sh final-contigs.fa
-
-unzip.sh:
-	date >> log
-	echo "start unzip" >> log
-	gunzip *.fastq.gz
-	date >> log
-	echo "end unzip" >> log
-
-split.sh:
-	date >> log
-	echo "start split" >> log 
-	bash split-com.sh
-	cat split.sh | parallel
-	date >> log
-	echo "end split" >> log
-
-zip.sh:
-	date >> log
-	echo "start zip" >> log
-	gzip *_R1.fastq
-	gzip *_R2.fastq
-	date >> log
-	echo "end zip" >> log
+all: trim-command.sh interleave-command.sh diginorm-command.sh error-trim.sh extract.sh final-contigs.fa
 
 trim-command.sh: $(seq_R1)
 	date >> log
